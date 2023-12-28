@@ -21,10 +21,10 @@ jobs:
             $(( runner.os ))-yarn-
 
       - name: 📦 Install Dependencies
-        run: cd frontend && yarn install
+        run: yarn install
 
       - name: 🖋️ Run Lint
-        run: cd frontend && yarn lint
+        run: yarn lint
 
       - name: 🧪 Run tests
-        run: cd frontend && yarn test
+        run: yarn test
