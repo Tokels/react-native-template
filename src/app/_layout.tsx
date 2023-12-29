@@ -1,13 +1,18 @@
 import React from 'react';
 import { Stack } from 'expo-router';
 import { NativeWindStyleSheet } from 'nativewind';
+import { ToastProvider } from '../providers/ToastProvider';
 
 NativeWindStyleSheet.setOutput({
   default: 'native',
 });
 
 export default function RootLayout() {
-  return <RootLayoutNav />;
+  return (
+    <ToastProvider>
+      <RootLayoutNav />
+    </ToastProvider>
+  );
 }
 
 function RootLayoutNav() {
