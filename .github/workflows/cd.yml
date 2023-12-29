@@ -1,0 +1,56 @@
+name: CD
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: 🎨 EAS build
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🔎 Check for EXPO_TOKEN
+        run: |
+          if [ -z "${{ secrets.EXPO_TOKEN }}" ]; then
+            echo "You must provide an EXPO_TOKEN secret linked to this project's Expo account in this repo's secrets. Learn more: https://docs.expo.dev/eas-update/github-actions"
+            exit 1
+          fi
+
+      - name: 🛠️ "Set ENV"
+        run: echo "$(BASE_URL)"
+        env:
+          BASE_URL: https://exampleapp.com
+
+      - name: 🛠️ Checkout repository
+        uses: actions/checkout@v2
+
+      - name: 🛠️ Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.12.0
+          cache: yarn
+          cache-dependency-path: frontend/yarn.lock
+
+      - name: 🛠️ Setup Expo
+        uses: expo/expo-github-action@v7
+        with:
+          expo-version: latest
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: 🔎 Find yarn cache
+        id: yarn-cache-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: 🛠️ Restore cache
+        uses: actions/cache@v2
+        with:
+          path: '${{ steps.yarn-cache-path.outputs.dir }}'
+          key: "${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}"
+          restore-keys: '${{ runner.os }}-yarn-'
+
+      - name: 📦 Install dependencies
+        run: cd frontend && yarn install --immutable
+
+      - name: 🚀 Publish build
+        run: cd frontend && eas build --platform android --profile preview --non-interactive
