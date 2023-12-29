@@ -23,6 +23,9 @@ jobs:
       - name: 📦 Install Dependencies
         run: yarn install
 
+      - name: 🖋️ Fix Lint & Format
+        run: yarn fix
+
       - name: 🖋️ Run Lint
         run: yarn lint
 

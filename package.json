@@ -9,9 +9,10 @@
     "web": "expo start --web",
     "test": "jest",
     "lint": "npx eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint-fix": "npm run lint -- --fix",
+    "lint-fix": "yarn lint --fix",
     "format": "prettier --check ./",
-    "format-fix": "npx prettier --write ./"
+    "format-fix": "npx prettier --write ./",
+    "fix": "yarn lint-fix && yarn format-fix"
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
