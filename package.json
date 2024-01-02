@@ -38,7 +38,8 @@
     "react-native-safe-area-context": "4.6.3",
     "react-native-screens": "~3.22.0",
     "react-native-web": "~0.19.6",
-    "toastify-react-native": "^4.0.0"
+    "toastify-react-native": "^4.0.0",
+    "uuidv4": "^6.2.13"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
