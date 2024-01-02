@@ -40,7 +40,7 @@ jobs:
 
       - name: 🔎 Find yarn cache
         id: yarn-cache-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
 
       - name: 🛠️ Restore cache
         uses: actions/cache@v2
@@ -53,4 +53,4 @@ jobs:
         run: yarn install --immutable
 
       - name: 🚀 Publish build
-        run: eas build --auto
+        run: eas build --platform android --profile preview
