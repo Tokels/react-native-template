@@ -3,6 +3,7 @@ import { Stack } from 'expo-router';
 import { NativeWindStyleSheet } from 'nativewind';
 import { ToastProvider } from '../providers/ToastProvider';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { TodosProvider } from '../api/TanStack/providers/TodosProvider';
 
 const queryClient = new QueryClient();
 
@@ -14,7 +15,9 @@ export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
       <ToastProvider>
-        <RootLayoutNav />
+        <TodosProvider>
+          <RootLayoutNav />
+        </TodosProvider>
       </ToastProvider>
     </QueryClientProvider>
   );
