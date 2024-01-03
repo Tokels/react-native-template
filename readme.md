@@ -32,4 +32,7 @@ You can find information about what states this template has to offer.
 
 #### Additional information
 
+You have to generate a Keystore key via Expo this can be done manually, but can also be done automatically by Expo by creating a preview build:
+`npx eas build --platform android`. When prompted to generate a Keystore key, answer Y.
+
 [Read this blogpost](https://juliastjerna.vercel.app/posts/application-setup-part-02a-react-native) for a step by step guide of how this template was generated.
