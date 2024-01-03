@@ -1,0 +1,19 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+.theme-dark {
+  --color-custom-100: 158, 200, 185;
+  --color-custom-200: 92, 131, 116;
+  --color-custom-300: 27, 66, 66;
+  --color-custom-400: 9, 38, 53;
+}
+
+.theme-light {
+  --color-custom-100: 9, 38, 53;
+  --color-custom-200: 27, 66, 66;
+  --color-custom-300: 92, 131, 116;
+  --color-custom-400: 158, 200, 185;
+}

@@ -4,6 +4,7 @@ import { NativeWindStyleSheet } from 'nativewind';
 import { ToastProvider } from '../providers/ToastProvider';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { TodosProvider } from '../api/TanStack/providers/TodosProvider';
+import { ThemeProvider } from '../providers/ThemeProvider';
 
 const queryClient = new QueryClient();
 
@@ -14,11 +15,13 @@ NativeWindStyleSheet.setOutput({
 export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
-      <ToastProvider>
-        <TodosProvider>
-          <RootLayoutNav />
-        </TodosProvider>
-      </ToastProvider>
+      <ThemeProvider>
+        <ToastProvider>
+          <TodosProvider>
+            <RootLayoutNav />
+          </TodosProvider>
+        </ToastProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
