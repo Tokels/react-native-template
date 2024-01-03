@@ -3,14 +3,14 @@
 ## How to use this template
 
 #### Cloning
-`git clone --depth 1 -b <branch_name> <rep_url>`
+`git clone --depth 1 -b <tag_name> <rep_url>`
 
 Example:
 `git clone --depth 1 -b v0.0.1 https://github.com/Tokels/react-native-template.git`
 
 You can find information about what states this template has to offer. 
 
-# Branches
+# Tags
 
 ## v0.0.1
 
