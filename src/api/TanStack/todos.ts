@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import axios from 'axios';
 import { Todo } from './interface';
-const API_URL = process.env.EXPO_PUBLIC_TODOS_API_URL;
+const API_URL = 'https://dummyjson.com';
 
 export const getTodos = async (): Promise<Todo[]> => {
   const result = await axios.get(`${API_URL}/todos?limit=7`);
