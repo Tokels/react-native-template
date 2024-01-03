@@ -7,7 +7,7 @@
 #### Cloning
 
 To clone the template:
-`git clone --depth 1 --branch 0.0.1 https://github.com/Tokels/react-native-template.git`
+`git clone --depth 1 --branch v0.0.1 https://github.com/Tokels/react-native-template.git`
 
 #### Includes:
 
