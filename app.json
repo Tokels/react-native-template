@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "wePay",
-    "slug": "wepay",
+    "name": "react-native-template",
+    "slug": "react-native-template",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/images/icon.png",
@@ -23,7 +23,7 @@
         "foregroundImage": "./src/assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.zerodeleo.wepay"
+      "package": "com.zerodeleo.reactnativetemplate"
     },
     "web": {
       "bundler": "metro",
@@ -41,7 +41,7 @@
         "origin": false
       },
       "eas": {
-        "projectId": "204f7662-72d3-40cc-a769-c3a85004998f"
+        "projectId": "fecebaf9-633b-44df-9dfc-c43d6dd53db1"
       }
     },
     "owner": "zerodeleo"
