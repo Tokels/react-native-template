@@ -1,5 +1,5 @@
 import React from 'react';
-import { Slot, Stack } from 'expo-router';
+import { Slot } from 'expo-router';
 import { NativeWindStyleSheet } from 'nativewind';
 import { ToastProvider } from '../providers/ToastProvider';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
