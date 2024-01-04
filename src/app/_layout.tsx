@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Slot, useRouter, useSegments } from 'expo-router';
 import { NativeWindStyleSheet } from 'nativewind';
 import { ToastProvider } from '../providers/ToastProvider';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { TodosProvider } from '../api/TanStack/providers/TodosProvider';
 import { ThemeProvider } from '../providers/ThemeProvider';
+import AuthProvider, { useAuth } from '../providers/AuthProvider';
 
 const queryClient = new QueryClient();
 
@@ -14,21 +15,22 @@ NativeWindStyleSheet.setOutput({
 
 export default function RootLayout() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        <ToastProvider>
-          <TodosProvider>
-            <InitialLayout />
-          </TodosProvider>
-        </ToastProvider>
-      </ThemeProvider>
-    </QueryClientProvider>
+    <AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider>
+          <ToastProvider>
+            <TodosProvider>
+              <InitialLayout />
+            </TodosProvider>
+          </ToastProvider>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </AuthProvider>
   );
 }
 
 function InitialLayout() {
-  const [token] = useState('valid-token');
-  const [initialized] = useState(true);
+  const { token, initialized } = useAuth();
   const router = useRouter();
   const segments = useSegments();
 
