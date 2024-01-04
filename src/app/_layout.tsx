@@ -1,5 +1,5 @@
-import React from 'react';
-import { Slot } from 'expo-router';
+import React, { useEffect, useState } from 'react';
+import { Slot, useRouter, useSegments } from 'expo-router';
 import { NativeWindStyleSheet } from 'nativewind';
 import { ToastProvider } from '../providers/ToastProvider';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
@@ -27,5 +27,22 @@ export default function RootLayout() {
 }
 
 function InitialLayout() {
+  const [token] = useState('valid-token');
+  const [initialized] = useState(true);
+  const router = useRouter();
+  const segments = useSegments();
+
+  useEffect(() => {
+    if (!initialized) return;
+
+    const inAuthGroup = segments[0] === '(auth)';
+
+    if (token && !inAuthGroup) {
+      router.replace('/(auth)/dashboard');
+    } else if (!token && inAuthGroup) {
+      router.replace('/(public)/login');
+    }
+  }, [token, initialized]);
+
   return <Slot />;
 }
