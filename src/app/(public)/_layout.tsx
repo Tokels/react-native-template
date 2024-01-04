@@ -1,12 +1,12 @@
 import React from 'react';
-import { Stack } from 'expo-router';
+import { Tabs } from 'expo-router';
 
 export default function InsideLayout() {
   return (
-    <Stack>
-      <Stack.Screen name="dashboard" options={{ headerTitle: 'Dashboard' }} />
-      <Stack.Screen name="login" options={{ headerTitle: 'Login' }} />
-      <Stack.Screen name="register" options={{ headerTitle: 'Create Account' }} />
-    </Stack>
+    <Tabs>
+      <Tabs.Screen name="dashboard" options={{ headerTitle: 'Dashboard' }} />
+      <Tabs.Screen name="login" options={{ headerTitle: 'Login' }} />
+      <Tabs.Screen name="register" options={{ headerTitle: 'Create Account' }} />
+    </Tabs>
   );
 }
