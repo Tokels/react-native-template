@@ -1,8 +1,12 @@
 import React, { ReactElement, createContext, useContext, useEffect, useState } from 'react';
+import { authorize } from '../api/Auth';
 
 type AuthProps = {
   token: string;
   initialized: boolean;
+  handleLogin: () => void;
+  handleLogout: () => void;
+  handleRegister: () => void;
 };
 
 const AuthContext = createContext<Partial<AuthProps>>({});
@@ -17,11 +21,28 @@ export default function AuthProvider({ children }: { children: ReactElement }) {
 
   useEffect(() => {
     const loadToken = () => {
-      setToken('valid-token');
       setInitialized(true);
     };
     loadToken();
   }, []);
 
-  return <AuthContext.Provider value={{ token, initialized }}>{children}</AuthContext.Provider>;
+  const handleLogin = () => {
+    const token = authorize();
+    setToken(token);
+  };
+
+  const handleLogout = () => {
+    setToken('');
+  };
+
+  const handleRegister = () => {
+    const token = authorize();
+    setToken(token);
+  };
+
+  return (
+    <AuthContext.Provider value={{ token, initialized, handleLogin, handleLogout, handleRegister }}>
+      {children}
+    </AuthContext.Provider>
+  );
 }
