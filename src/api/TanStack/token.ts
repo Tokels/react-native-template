@@ -2,7 +2,6 @@ import { secureStoreDelete, secureStoreGetValueFor, secureStoreSave } from '../S
 
 export const initialize = async () => {
   const token = await secureStoreGetValueFor('token');
-  console.log(token);
   return token;
 };
 
