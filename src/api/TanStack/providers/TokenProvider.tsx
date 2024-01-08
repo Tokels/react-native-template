@@ -2,9 +2,10 @@
 import React, { ReactElement, createContext, useContext } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { login, initialize, logout, refresh, register } from '../token';
+import { tokenInit } from '../interface';
 
 type TokenProps = {
-  token: string;
+  accessToken: string;
   loginToken: () => void;
   deleteToken: () => void;
   refreshToken: () => void;
@@ -39,7 +40,7 @@ export const TokenProvider = ({ children }: { children: ReactElement }) => {
   const deleteMutation = useMutation({
     mutationFn: logout,
     onSuccess: () => {
-      queryClient.setQueryData(['token'], '');
+      queryClient.setQueryData(['token'], tokenInit);
     },
   });
 
@@ -72,7 +73,7 @@ export const TokenProvider = ({ children }: { children: ReactElement }) => {
   return (
     <TokenContext.Provider
       value={{
-        token,
+        accessToken: token?.accessToken,
         loginToken,
         deleteToken,
         refreshToken,

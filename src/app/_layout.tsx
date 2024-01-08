@@ -33,19 +33,19 @@ export default function RootLayout() {
 }
 
 function InitialLayout() {
-  const { token } = useAuth();
+  const { accessToken } = useAuth();
   const router = useRouter();
   const segments = useSegments();
 
   useEffect(() => {
     const inAuthGroup = segments[0] === '(auth)';
 
-    if (token && !inAuthGroup) {
+    if (accessToken && !inAuthGroup) {
       router.replace('/(auth)/dashboard');
-    } else if (!token && inAuthGroup) {
+    } else if (!accessToken && inAuthGroup) {
       router.replace('/(public)/login');
     }
-  }, [token]);
+  }, [accessToken]);
 
   return <Slot />;
 }
