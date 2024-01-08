@@ -6,6 +6,7 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { TodosProvider } from '../api/TanStack/providers/TodosProvider';
 import { ThemeProvider } from '../providers/ThemeProvider';
 import AuthProvider, { useAuth } from '../providers/AuthProvider';
+import { TokenProvider } from '../api/TanStack/providers/TokenProvider';
 
 const queryClient = new QueryClient();
 
@@ -15,28 +16,28 @@ NativeWindStyleSheet.setOutput({
 
 export default function RootLayout() {
   return (
-    <AuthProvider>
-      <QueryClientProvider client={queryClient}>
-        <ThemeProvider>
-          <ToastProvider>
-            <TodosProvider>
-              <InitialLayout />
-            </TodosProvider>
-          </ToastProvider>
-        </ThemeProvider>
-      </QueryClientProvider>
-    </AuthProvider>
+    <QueryClientProvider client={queryClient}>
+      <TokenProvider>
+        <AuthProvider>
+          <ThemeProvider>
+            <ToastProvider>
+              <TodosProvider>
+                <InitialLayout />
+              </TodosProvider>
+            </ToastProvider>
+          </ThemeProvider>
+        </AuthProvider>
+      </TokenProvider>
+    </QueryClientProvider>
   );
 }
 
 function InitialLayout() {
-  const { token, initialized } = useAuth();
+  const { token } = useAuth();
   const router = useRouter();
   const segments = useSegments();
 
   useEffect(() => {
-    if (!initialized) return;
-
     const inAuthGroup = segments[0] === '(auth)';
 
     if (token && !inAuthGroup) {
@@ -44,7 +45,7 @@ function InitialLayout() {
     } else if (!token && inAuthGroup) {
       router.replace('/(public)/login');
     }
-  }, [token, initialized]);
+  }, [token]);
 
   return <Slot />;
 }
