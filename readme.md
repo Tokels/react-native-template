@@ -3,6 +3,7 @@
 ## How to use this template
 
 #### Cloning
+
 `git clone --depth 1 -b <tag_name> <rep_url>`
 
 Example:
