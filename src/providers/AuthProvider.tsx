@@ -2,8 +2,7 @@ import React, { ReactElement, createContext, useContext } from 'react';
 import { useToken } from '../api/TanStack/providers/TokenProvider';
 
 type AuthProps = {
-  token: string;
-  initialized: boolean;
+  accessToken: string;
   handleLogin: () => void;
   handleLogout: () => void;
   handleRegister: () => void;
@@ -16,7 +15,7 @@ export function useAuth() {
 }
 
 export default function AuthProvider({ children }: { children: ReactElement }) {
-  const { token, loginToken, deleteToken, registerToken } = useToken();
+  const { accessToken, loginToken, deleteToken, registerToken } = useToken();
 
   const handleLogin = () => {
     loginToken!();
@@ -31,7 +30,7 @@ export default function AuthProvider({ children }: { children: ReactElement }) {
   };
 
   return (
-    <AuthContext.Provider value={{ token, handleLogin, handleLogout, handleRegister }}>
+    <AuthContext.Provider value={{ accessToken, handleLogin, handleLogout, handleRegister }}>
       {children}
     </AuthContext.Provider>
   );
