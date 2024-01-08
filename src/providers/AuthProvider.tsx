@@ -1,5 +1,5 @@
-import React, { ReactElement, createContext, useContext, useEffect, useState } from 'react';
-import { authorize } from '../api/Auth';
+import React, { ReactElement, createContext, useContext } from 'react';
+import { useToken } from '../api/TanStack/providers/TokenProvider';
 
 type AuthProps = {
   token: string;
@@ -16,32 +16,22 @@ export function useAuth() {
 }
 
 export default function AuthProvider({ children }: { children: ReactElement }) {
-  const [token, setToken] = useState('');
-  const [initialized, setInitialized] = useState(false);
-
-  useEffect(() => {
-    const loadToken = () => {
-      setInitialized(true);
-    };
-    loadToken();
-  }, []);
+  const { token, loginToken, deleteToken, registerToken } = useToken();
 
   const handleLogin = () => {
-    const token = authorize();
-    setToken(token);
+    loginToken!();
   };
 
   const handleLogout = () => {
-    setToken('');
+    deleteToken!();
   };
 
   const handleRegister = () => {
-    const token = authorize();
-    setToken(token);
+    registerToken!();
   };
 
   return (
-    <AuthContext.Provider value={{ token, initialized, handleLogin, handleLogout, handleRegister }}>
+    <AuthContext.Provider value={{ token, handleLogin, handleLogout, handleRegister }}>
       {children}
     </AuthContext.Provider>
   );
