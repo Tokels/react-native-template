@@ -33,6 +33,7 @@ export const register = async (): Promise<Token> => {
     expires: Date.now() + 86400000,
   }); // Will be replaced with API call
   await secureStoreSave('token', JSON.stringify(token));
+  return token;
 };
 
 export const logout = async () => {
