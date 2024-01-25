@@ -1,5 +1,5 @@
 import React, { ReactElement, createContext, useContext } from 'react';
-import { useToken } from '../api/TanStack/providers/TokenProvider';
+import { useToken } from '../../TanStack/providers/TokenProvider';
 
 type AuthProps = {
   accessToken: string;

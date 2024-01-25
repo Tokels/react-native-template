@@ -9,7 +9,7 @@
 Example:
 `git clone --depth 1 -b v0.0.1 https://github.com/Tokels/react-native-template.git`
 
-You can find information about what states this template has to offer. 
+You can find information about what states this template has to offer.
 
 # Tags
 
