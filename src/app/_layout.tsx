@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import { Slot, useRouter, useSegments } from 'expo-router';
 import { NativeWindStyleSheet } from 'nativewind';
-import { ToastProvider } from '../providers/ToastProvider';
+import { ToastProvider } from '../api/context/providers/ToastProvider';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-import { TodosProvider } from '../api/TanStack/providers/TodosProvider';
-import { ThemeProvider } from '../providers/ThemeProvider';
-import AuthProvider, { useAuth } from '../providers/AuthProvider';
+import { ThemeProvider } from '../api/context/providers/ThemeProvider';
+import AuthProvider, { useAuth } from '../api/context/providers/AuthProvider';
 import { TokenProvider } from '../api/TanStack/providers/TokenProvider';
 
 const queryClient = new QueryClient();
@@ -21,9 +20,7 @@ export default function RootLayout() {
         <AuthProvider>
           <ThemeProvider>
             <ToastProvider>
-              <TodosProvider>
-                <InitialLayout />
-              </TodosProvider>
+              <InitialLayout />
             </ToastProvider>
           </ThemeProvider>
         </AuthProvider>
