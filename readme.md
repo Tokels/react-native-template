@@ -37,3 +37,16 @@ You have to generate a Keystore key via Expo this can be done manually, but can 
 `npx eas build --platform android`. When prompted to generate a Keystore key, answer Y.
 
 [Read this blogpost](https://juliastjerna.vercel.app/posts/application-setup-part-02a-react-native) for a step by step guide of how this template was generated.
+
+## v0.0.2
+
+### React Native - Simple application setup with simple authentication MVP style
+
+#### Includes:
+
+1. An extension of `v0.0.1`
+2. Simple authentication using TanStack query MVP style
+
+#### Additional information
+
+[Read this blogpost](https://juliastjerna.vercel.app/posts/application-setup-part-02b-react-native) for a step by step guide of how this template was generated.
